@@ -17,9 +17,9 @@ The Budget Tracker is a simple Python program designed to help users manage thei
 4. Run the program:
    python budget_tracker.py 
 
-**Example Usage** 
--Enter your income and expenses. 
--View the summary:  
+**Example Usage**                       
+Enter your income and expenses.                  
+View the summary:  
 
 ----------------- 
 Your Incomes 
