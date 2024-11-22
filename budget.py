@@ -35,13 +35,13 @@ def add_expense(Balance): #Function to append expense amounts
     return Balance
 
 def view_summary():
-    print(f"\n{"."*5}\nYour Incomes\n{"."*5}")
+    print(f"\n{"-"*10}\nYour Incomes\n{"-"*10}")
     for entry in income_entries:
         print(f"Category: {entry['Category']}, Incomes: {entry['Amount']} ")
-    print(f"\n{"."*5}\nYour Expenses\n{"."*5}")
+    print(f"\n{"."*10}\nYour Expenses\n{"."*10}")
     for entry in expense_entries:
         print(f"Category:{entry['Category']}, Amount: {entry['Amount']}")
-    print(f"Net Balance: {Balance}")
+    print(f"\n{"-"*10} Net Balance: {Balance: .2f}{"-"*10}")
 
 import json
 
@@ -63,7 +63,8 @@ def load_data():
             expense_entries = data["Expenses"]
             print("Data Loaded Successfully")
     except FileNotFoundError:
-        print("Error: The file budget.json does not exist! Refreshing")
+        print("File Not Found. Refreshing!")
+        save_data() #creates an empty file with initial data
 
 
     
@@ -83,14 +84,16 @@ while True:
     print("3: View Summary")
     print("4: Exit")
 
-    choice = input("Enter your option")
+    choice = input("Enter your option: ")
 
     if choice == "1":
-        print("Adding Income.....")
+        print(f"{"-"*5} Adding Income {"-"*5}")
         Balance = add_income(Balance)
+        print(f"Income added! Updated Balance: {Balance}")
     elif choice == "2":
-        print("Adding Expense....")
+        print(f"{"-"*5}Adding expenses{"-"*5}")
         Balance = add_expense(Balance)
+        print(f"Expense added! Updated Balance: {Balance}")
     elif choice == "3":
         print("Making your summary")
         view_summary()
